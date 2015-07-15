@@ -80,56 +80,22 @@ class Seed
     puts "500,000 events generated"
   end
 
-
-
-
   def generate_users
-    User.create!(
-      full_name: "Tyler Durden",
-      email: "tyler@mayhem.com",
-      password: 'password',
-      password_confirmation: 'password',
-      street_1: Faker::Address.street_address,
-      street_2: Faker::Address.secondary_address,
-      city: Faker::Address.city,
-      state: Faker::Address.state,
-      zipcode: 80202,
-      display_name: "Tyler"
-    )
-
     count = 0
-    20.times do
-      User.create!(
-        full_name: Faker::Name.name,
-        email: "#{Faker::Lorem.characters(10)}#{Faker::Internet.email}",
-        password: 'password',
-        password_confirmation: 'password',
-        street_1: Faker::Address.street_address,
-        street_2: Faker::Address.secondary_address,
-        city: Faker::Address.city,
-        state: Faker::Address.state,
-        zipcode: 80202,
-        display_name: "#{Faker::Lorem.characters(27)}#{rand(100..999)}"
-      )
-    end
-
-    User.populate(199_980) do |user|
+    User.populate(200_000, :per_query => 100_000) do |user|
       user.full_name = Faker::Name.name
       user.email = "#{Faker::Lorem.characters(10)}#{Faker::Internet.email}"
-      user.password_digest = 'password'
+      user.password_digest = BCrypt::Password.create('password')
       user.street_1 = Faker::Address.street_address
       user.street_2 = Faker::Address.secondary_address
       user.city = Faker::Address.city
       user.state = Faker::Address.state
-      user.zipcode = 80202
-      user.slug = "#{Faker::Lorem.characters(27)}#{rand(100..999)}"
+      user.zipcode = 80226
+      user.slug = "#{Faker::Lorem.characters(47)}#{rand(100..999)}"
+      puts "user #{count += 1} created"
     end
-    p "users."
+    puts "200,000 users generated"
   end
-
-
-
-
 
   def generate_items
     count = 0
