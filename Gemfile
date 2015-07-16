@@ -15,6 +15,8 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'figaro'
 gem 'newrelic_rpm'
+gem 'will_paginate', '~> 3.0.6'
+# gem 'will_paginate-bootstrap'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
