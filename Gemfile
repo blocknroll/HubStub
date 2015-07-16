@@ -25,6 +25,8 @@ gem 'geokit'
 gem 'populator'
 gem 'capybara'
 gem 'selenium-webdriver'
+gem 'poltergeist'
+
 
 
 group :development, :test do
@@ -36,7 +38,6 @@ group :development, :test do
   gem 'pry'
   gem 'factory_girl_rails', '~> 4.5.0'
   gem 'database_cleaner', '~> 1.4.0'
-  gem 'poltergeist'
 end
 
 group :production do
