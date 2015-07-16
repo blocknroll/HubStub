@@ -11,7 +11,7 @@ class EventsController < ApplicationController
     if @category
       @events = Event.where(category: @category).paginate(:page => params[:page], :per_page => 10)
     else
-      @events = Event.all.paginate(:page => params[:page], :per_page => 1 )
+      @events = Event.all.paginate(:page => params[:page], :per_page => 5 )
     end
   end
 
